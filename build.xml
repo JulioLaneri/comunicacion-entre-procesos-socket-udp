@@ -1,0 +1,55 @@
+
+<project name="udp-socket" default="run-server">
+
+    <property name="src.dir" value="src"/>
+    <property name="build.dir" value="build"/>
+    <property name="lib.dir" value="lib"/>
+
+    <path id="classpath">
+        <fileset dir="${lib.dir}">
+            <include name="*.jar"/>
+        </fileset>
+    </path>
+
+    <target name="init">
+        <mkdir dir="${build.dir}"/>
+    </target>
+
+    <target name="java-compile" depends="init">
+        <javac srcdir="${src.dir}" destdir="${build.dir}" includeantruntime="false" classpathref="classpath">
+        </javac>
+    </target>
+
+    <target name="run-server"> 
+        <java classname="server.Server" classpathref="classpath">
+            <classpath>
+                <pathelement location = "${build.dir}"/>
+            </classpath>
+        </java>
+    </target>
+
+    <target name="run-client1" >
+        <java classname="client.Client1" classpathref="classpath">
+            <classpath>
+                <pathelement location = "${build.dir}"/>
+            </classpath>
+        </java>
+    </target>
+
+    <target name="run-client2" >
+        <java classname="client.Client2" classpathref="classpath">
+            <classpath>
+                <pathelement location = "${build.dir}"/>
+            </classpath>
+        </java>
+    </target>
+
+    <target name="run-client3" >
+        <java classname="client.Client3" classpathref="classpath">
+            <classpath>
+                <pathelement location = "${build.dir}"/>
+            </classpath>
+        </java>
+    </target>
+
+</project>
